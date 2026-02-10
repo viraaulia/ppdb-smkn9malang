@@ -3,7 +3,7 @@
   <div class="container">
 
     <a href="/" class="navbar-brand">
-      PPDB SMKN 9 Malang
+      PPDB SMK Negeri 9 Malang
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#guestNavbar">
@@ -19,6 +19,10 @@
 
         <li class="nav-item {{ request()->is('tentang*') ? 'active' : '' }}">
           <a class="nav-link" href="/tentang">Tentang</a>
+        </li>
+
+        <li class="nav-item {{ request()->is('jurusan*') ? 'active' : '' }}">
+          <a class="nav-link" href="/jurusan">Jurusan</a>
         </li>
 
         <li class="nav-item {{ request()->is('alur*') ? 'active' : '' }}">

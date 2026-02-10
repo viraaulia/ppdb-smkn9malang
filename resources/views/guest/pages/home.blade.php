@@ -1,33 +1,23 @@
 @extends('guest.layouts.app')
 
+@section('title', 'Beranda')
+
 @section('content')
-<div class="container">
-
-  {{-- HERO SECTION --}}
-  <div class="row align-items-center" style="min-height: 60vh;">
-    <div class="col-md-12 text-center">
-
-      <h1 class="display-4 font-weight-bold">
-        PPDB SMKN 9 Malang
-      </h1>
-
-      <p class="lead mt-3 mb-4">
-        Sistem Penerimaan Peserta Didik Baru<br>
-        Tahun Ajaran {{ date('Y') }}/{{ date('Y') + 1 }}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10 text-center">
+      <h1 class="mb-3">PPDB SMK Negeri 9 Malang</h1>
+      <p class="lead">
+        Sistem Penerimaan Peserta Didik Baru (PPDB) SMK Negeri 9 Malang
+        memberikan kemudahan bagi calon peserta didik untuk memperoleh
+        informasi serta melakukan pendaftaran secara online.
       </p>
 
-      <div>
-        <a href="/daftar" class="btn btn-primary btn-lg mr-2">
-          Daftar Sekarang
-        </a>
-
-        <a href="/login" class="btn btn-outline-primary btn-lg">
-          Login
-        </a>
+      <div class="mt-4">
+        <a href="/login" class="btn btn-primary mr-2">Daftar / Login</a>
+        <a href="/alur" class="btn btn-outline-secondary">Lihat Alur</a>
       </div>
-
     </div>
   </div>
-
 </div>
 @endsection
