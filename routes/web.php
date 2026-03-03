@@ -10,6 +10,9 @@ Route::get('/pengguna', function () {
     return view('admin.pages.pengguna.index');
 })->name('pengguna');
 
+use App\Http\Controllers\SekolahController;
+Route::resource('sekolah', SekolahController::class);
+
 Route::get('/jurusan', function () {
     return view('admin.pages.jurusan.index');
 })->name('jurusan');

@@ -20,7 +20,10 @@
             <a href="{{route ('jurusan')}}" class="nav-link"><i class="fas fa-book"></i><span>Jurusan</span></a>
             </li>
             <li class="dropdown {{ request()->routeIs('pendaftaran')?'active': '' }}">
-            <a href="{{route ('pendaftaran')}}" class="nav-link"><i class="fas fa-clipboard-list"></i><span>Pendaftaran</span></a>
+            <a href="{{route ('pendaftaran')}}" class="nav-link"><i class="fas fa-calendar-alt"></i><span>Pendaftaran</span></a>
+            </li>
+            <li class="dropdown {{ request()->routeIs('sekolah.*')?'active': '' }}">
+            <a href="{{route ('sekolah.index')}}" class="nav-link"><i class="fas fa-school"></i><span>Sekolah</span></a>
             </li>
 
           <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
