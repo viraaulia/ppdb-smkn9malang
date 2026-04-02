@@ -17,41 +17,37 @@
                   <div class="card-body">
                     <div class="table-responsive">
                       <table class="table table-bordered table-md">
-                        <tr>
-                          <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                      <tr> 
+                        <th>#</th> 
+                        <th>Sekolah</th> 
+                        <th>Email</th> 
+                        <th>No Telepon</th> 
+                        <th>Aksi</th> 
+                      </tr> 
+
+                      @foreach ($sekolahs as $sekolah)
+
+                        <tr> 
+                          <td>{{ $sekolah->id}}</td> 
+                          <td>
+                              {{$sekolah->nama_sekolah}} 
+                              <p class="text-small">{{$sekolah->alamat}}</p>
+                          </td> 
+                          <td>{{$sekolah->email}}</td> 
+                          <td>{{$sekolah->no_telp}}</td> 
+                          <td>
+                            <a href="{{ route('sekolah.edit', $sekolah->id) }}" class="btn btn-warning">Edit</a>
+                            <button class="btn btn-danger" onclick="handleDelete({{ $sekolah->id }})">Hapus</button>
+                          </td> 
+                        </tr> 
+
+                      @endforeach
+
+                      <form id="form-delete" action="" method="POST">
+                        @method("DELETE")
+                        @csrf
+                      </form>
+
                       </table>
                     </div>
                   </div>
@@ -79,3 +75,16 @@
 </section>
 </div>
 @endsection
+@push('js')
+<script>
+
+  function handleDelete(id) {
+    $('#form-delete').attr('action','/sekolah/'+id);
+      var check = confirm('Apakah anda yakin ingin menghapus data ini?');
+    if(check) {
+        $('#form-delete').submit();
+    }
+  }
+
+</script>
+@endpush

@@ -12,8 +12,11 @@ class SekolahController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('admin.pages.sekolah.index');
+    {   
+        $data = [
+            'sekolahs'=> Sekolah::paginate(10),
+            ];
+        return view('admin.pages.sekolah.index',$data);
     }
 
     /**
@@ -30,8 +33,15 @@ class SekolahController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nama_sekolah' => 'required',
+            'email' => 'required|email',
+            'no_telp' => 'required',
+            'alamat' => 'required'
+        ]);
+
         Sekolah::create($request->all());
-        return to_route('sekolah.index');
+        return to_route('sekolah.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -48,6 +58,8 @@ class SekolahController extends Controller
     public function edit(string $id)
     {
         //
+        $sekolah = Sekolah::find($id);
+        return view('admin.pages.sekolah.edit', compact('sekolah'));
     }
 
     /**
@@ -56,6 +68,17 @@ class SekolahController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'nama_sekolah' => 'required',
+            'email' => 'required|email',
+            'no_telp' => 'required',
+            'alamat' => 'required'
+        ]);
+
+        $sekolah = Sekolah::findOrFail($id);
+        $sekolah->update($request->all());
+
+        return to_route('sekolah.index')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -64,5 +87,9 @@ class SekolahController extends Controller
     public function destroy(string $id)
     {
         //
+        $sekolah = Sekolah::find($id);
+        $sekolah->delete();
+
+        return to_route('sekolah.index');
     }
 }

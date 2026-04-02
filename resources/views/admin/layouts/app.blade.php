@@ -62,6 +62,7 @@
   <!-- Template JS File -->
   <script src="{{asset('')}}assets/js/scripts.js"></script>
   <script src="{{asset('')}}assets/js/custom.js"></script>
+  @stack('js')
 </body>
 
 <!-- Mirrored from themewagon.github.io/stisla-1/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Feb 2026 01:32:10 GMT -->
